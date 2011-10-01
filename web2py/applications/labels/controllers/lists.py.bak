@@ -1,0 +1,19 @@
+# coding: utf8
+# intente algo como
+def labels():
+    from gluon.contrib.pyfpdf.pdflabels import PDFLabel
+    
+    
+    pdf = PDFLabel('Avery-L7163')
+    pdf.add_page()
+    # Print labels
+        
+    for i in range(0,20):
+        text="%s\n%s\n%s\n%s %s, %s" % ("Laurent %s" % str(i), 'Immeuble Toto', 'av. Fragonard', '06000', 'NICE', 'FRANCE')
+        pdf.add_label(text)
+        
+    response.headers['Content-Type'] = 'application/pdf'
+    return pdf.output(dest='S')     
+    
+def table():
+    return dict()
